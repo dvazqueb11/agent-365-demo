@@ -17,6 +17,9 @@ async function callCopilotStudioAgent(userMessage) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ task: userMessage }),
     });
+    if (!res.ok) {
+      return { status: 'error', message: `HTTP ${res.status}: ${res.statusText}` };
+    }
     return await res.json();
   } catch (err) {
     return { status: 'error', message: err.message };

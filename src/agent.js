@@ -80,7 +80,8 @@ class OrchestratorAgent extends ActivityHandler {
 
 function formatN8nResult(result) {
   if (result.status === 'error') return `⚠️ n8n error: ${result.message}`;
-  return `Status: ${result.status}, Value: ${result.value}`;
+  const value = result.value !== undefined ? result.value : 'N/A';
+  return `Status: ${result.status}, Value: ${value}`;
 }
 
 function formatCopilotResult(result) {
